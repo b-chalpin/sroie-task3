@@ -24,10 +24,10 @@ def main():
     model = MyModel0(len(VOCAB), 16, args.hidden_size).to(args.device)
 
     dataset = MyDataset(
-        "data/data_dict4.pth",
+        "../data/data_dict4.pth",
         args.device,
         val_size=args.val_size,
-        test_path="data/test_dict.pth",
+        test_path="../data/test_dict.pth",
     )
 
     criterion = nn.CrossEntropyLoss(
@@ -49,7 +49,7 @@ def main():
 
     # validate(model, dataset, batch_size=10)
 
-    torch.save(model.state_dict(), "model.pth")
+    torch.save(model.state_dict(), "../results/trained_model/model.pth")
 
     model.eval()
     with torch.no_grad():
@@ -66,7 +66,7 @@ def main():
             real_text = dataset.test_dict[key]
             result = pred_to_dict(real_text, pred, prob)
 
-            with open("results/" + key + ".json", "w", encoding="utf-8") as json_opened:
+            with open(f"../results/output/{key}.json", "w", encoding="utf-8") as json_opened:
                 json.dump(result, json_opened, indent=4)
 
             print(key)

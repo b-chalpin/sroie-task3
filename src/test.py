@@ -15,9 +15,9 @@ def test():
     args.device = torch.device(args.device)
 
     model = MyModel0(len(VOCAB), 16, args.hidden_size).to(args.device)
-    dataset = MyDataset(None, args.device, test_path="data/test_dict.pth")
+    dataset = MyDataset(None, args.device, test_path="../data/test_dict.pth")
 
-    model.load_state_dict(torch.load("model.pth"))
+    model.load_state_dict(torch.load("..results/trained_model/model.pth"))
 
     model.eval()
     with torch.no_grad():
