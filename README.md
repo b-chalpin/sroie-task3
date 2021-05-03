@@ -1,4 +1,6 @@
 # AIRE - Analytics Engine
+The purpose of this project is to evaluate different potential model structures for AIRE Analytics Engine.
+
 This project is for POC purposes only. 
 
 
