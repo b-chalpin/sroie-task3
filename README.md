@@ -1,5 +1,11 @@
-# SROIE - Task 3
+# AIRE - Analytics Engine
+The purpose of this project is to evaluate different potential model structures for AIRE Analytics Engine.
 
-Task 3 of ICDAR 2019 Robust Reading Challenge on Scanned Receipts OCR and Information Extraction. The original challenge is [here](https://rrc.cvc.uab.es/?ch=13).
+This project is for POC purposes only. 
 
-Please check our full project instead: [ICDAR-2019-SROIE](https://github.com/zzzDavid/ICDAR-2019-SROIE).
+
+## Acknowledgements
+This project was forked from [patrick22414/sroi-task3](https://github.com/patrick22414/sroie-task3).
+
+All credit goes to the contributors [patrick22414](https://github.com/patrick22414) and [zzzDavid](https://github.com/zzzDavid).
+
