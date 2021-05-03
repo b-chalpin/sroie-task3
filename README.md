@@ -1,5 +1,9 @@
-# SROIE - Task 3
+# AIRE - Analytics Engine
+This project is for POC purposes only. 
 
-Task 3 of ICDAR 2019 Robust Reading Challenge on Scanned Receipts OCR and Information Extraction. The original challenge is [here](https://rrc.cvc.uab.es/?ch=13).
 
-Please check our full project instead: [ICDAR-2019-SROIE](https://github.com/zzzDavid/ICDAR-2019-SROIE).
+## Acknowledgements
+This project was forked from [patrick22414/sroi-task3](https://github.com/patrick22414/sroie-task3).
+
+All credit goes to the creator.
+
