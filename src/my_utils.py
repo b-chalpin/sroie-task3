@@ -47,7 +47,6 @@ def robust_padding(texts, labels):
             labels[i], (pad_before, pad_after), "constant", constant_values=0
         )
 
-
 def random_string(n):
     if n == 0:
         return ""

@@ -19,7 +19,7 @@ VOCAB = ascii_uppercase + digits + punctuation + " \t\n"
 
 class MyDataset(data.Dataset):
     def __init__(
-        self, dict_path="data/data_dict.pth", device="cpu", val_size=76, test_path=None
+            self, dict_path="data/data_dict.pth", device="cpu", val_size=76, test_path=None
     ):
         if dict_path is None:
             self.val_dict = {}
@@ -30,6 +30,8 @@ class MyDataset(data.Dataset):
 
             self.val_dict = dict(data_items[:val_size])
             self.train_dict = dict(data_items[val_size:])
+
+            print(f"DATA_ITEM: {data_items[0]}")
 
         if test_path is None:
             self.test_dict = {}
@@ -46,11 +48,13 @@ class MyDataset(data.Dataset):
         return text_tensor.to(self.device)
 
     def get_train_data(self, batch_size=8):
+        # Random sample the training data set of size batch_size=8
         samples = random.sample(self.train_dict.keys(), batch_size)
 
         texts = [self.train_dict[k][0] for k in samples]
         labels = [self.train_dict[k][1] for k in samples]
 
+        # pad text and labels so that their lengths are normalized
         robust_padding(texts, labels)
 
         maxlen = max(len(t) for t in texts)
@@ -62,6 +66,9 @@ class MyDataset(data.Dataset):
         truth_tensor = torch.zeros(maxlen, batch_size, dtype=torch.long)
         for i, label in enumerate(labels):
             truth_tensor[:, i] = torch.LongTensor(label)
+
+        # print(f"TEXT_TENSOR: {text_tensor}")
+        # print(f"TRUTH_TENSOR: {truth_tensor}")
 
         return text_tensor.to(self.device), truth_tensor.to(self.device)
 
@@ -137,7 +144,6 @@ def create_test_data():
 
 
 def create_data(data_path="tmp/data/"):
-
     json_files, txt_files = get_files(data_path)
     keys = [path.splitext(f.name)[0] for f in json_files]
 
@@ -180,7 +186,7 @@ def create_data(data_path="tmp/data/"):
                     v = s[0]
 
                 pos = text_space.find(v)
-                text_class[pos : pos + len(v)] = i + 1
+                text_class[pos: pos + len(v)] = i + 1
 
         data_dict[key] = (text, text_class)
 
